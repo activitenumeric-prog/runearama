@@ -3,6 +3,9 @@
 [ext_resource type="Script" path="res://scripts/Enemy.gd" id="1"]
 [ext_resource type="Script" path="res://scripts/Stats.gd" id="2"]
 
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(12, 12)
+
 [node name="Enemy" type="CharacterBody2D"]
 script = ExtResource("1")
 collision_layer = 2
@@ -10,9 +13,6 @@ collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("1")
-
-[sub_resource type="RectangleShape2D" id="1"]
-size = Vector2(12, 12)
 
 [node name="Stats" type="Node" parent="."]
 script = ExtResource("2")

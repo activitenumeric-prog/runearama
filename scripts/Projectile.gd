@@ -5,18 +5,18 @@ extends Area2D
 var dir := Vector2.ZERO
 
 func _ready():
-    body_entered.connect(_on_body_entered)
-    area_entered.connect(_on_area_entered)
+	body_entered.connect(_on_body_entered)
+	area_entered.connect(_on_area_entered)
 
 func _physics_process(delta):
-    global_position += dir * speed * delta
+	global_position += dir * speed * delta
 
 func _on_body_entered(body):
-    if body.has_node("Stats"):
-        body.get_node("Stats").take_damage(damage)
-    queue_free()
+	if body.has_node("Stats"):
+		body.get_node("Stats").take_damage(damage)
+	queue_free()
 
 func _on_area_entered(a):
-    if a.has_node("Stats"):
-        a.get_node("Stats").take_damage(damage)
-    queue_free()
+	if a.has_node("Stats"):
+		a.get_node("Stats").take_damage(damage)
+	queue_free()

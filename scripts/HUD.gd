@@ -7,21 +7,21 @@ extends Control
 @onready var lives_lbl = $Margin/VBox/Lives
 
 func set_score(v:int):
-    score_lbl.text = "Score: %d" % v
+	score_lbl.text = "Score: %d" % v
 
 func set_lives(v:int):
-    lives_lbl.text = "Vies: %d" % v
+	lives_lbl.text = "Vies: %d" % v
 
 func update_hp(curr:int, maxv:int):
-    hp_bar.max_value = maxv
-    hp_bar.value = curr
+	hp_bar.max_value = maxv
+	hp_bar.value = curr
 
 func update_mana(curr:int, maxv:int):
-    mana_bar.max_value = maxv
-    mana_bar.value = curr
+	mana_bar.max_value = maxv
+	mana_bar.value = curr
 
 func show_message(t:String):
-    label.text = t
-    label.modulate.a = 1.0
-    await get_tree().create_timer(2.0).timeout
-    label.modulate.a = 0.0
+	label.text = t
+	label.modulate.a = 1.0
+	await get_tree().create_timer(2.0).timeout
+	label.modulate.a = 0.0

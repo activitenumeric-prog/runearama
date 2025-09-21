@@ -15,15 +15,11 @@
 - Génération procédurale simple (drunkard walk) avec murs instanciés.
 - Joueur et ennemis (poursuite, PV, mort).
 - Projectiles avec dégâts.
-- Système de magie basé Resource (`resources/spells/Bolt.tres`), via `scripts/Spell.gd` et `Caster.gd`.
+- Système de magie basé Resource (`resources/spells/Bolt.tres`), via `scripts/Spell.gd` et `scripts/Caster.gd`.
 - HUD (PV, Mana, Score, Vies).
 
-## À brancher dans l’éditeur
-- Dans `Player` → `Caster`, ajoute un élément dans `spells` et selectionne `resources/spells/Bolt.tres`.
-  (On laisse volontairement ce branchement manuel pour que tu voies comment ajouter d'autres sorts plus tard.)
+## Brancher le sort
+- Dans `Player` → `Caster`, ajoute un élément dans `spells` et sélectionne `resources/spells/Bolt.tres`.
 
-## Pistes d’extension
-- Ajoute d'autres `Spell.tres` (aoe, cône, rayon).
-- Différents types d'ennemis.
-- Portes, clés, sortie de niveau conditionnée.
-- Effets visuels (sprites, particules, sons).
+## Notes sur les erreurs possibles
+- Messages `Couldn't find preset.* include_filter` : ils viennent souvent d'un `export_presets.cfg` manquant/obsolète. Ils sont **sans impact** pour jouer dans l'éditeur. Tu peux les ignorer tant que tu n'exportes pas le projet.
