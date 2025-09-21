@@ -4,3 +4,5 @@
 Thumbs.db
 *.tmp
 /exports/
+*.import
+*.bak

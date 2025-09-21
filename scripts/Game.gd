@@ -7,7 +7,14 @@ extends Node2D
 @onready var replay_button: Button = $GameOverOverlay/GOPanel/ReplayButton
 
 func _ready() -> void:
-	# Appliquer les réglages
+	# Ces noeuds doivent continuer à fonctionner quand le jeu est en pause
+	if pause_layer:
+		pause_layer.process_mode = Node.PROCESS_MODE_WHEN_PAUSED
+	if gameover_layer:
+		gameover_layer.process_mode = Node.PROCESS_MODE_WHEN_PAUSED
+	if replay_button:
+		replay_button.process_mode = Node.PROCESS_MODE_WHEN_PAUSED
+
 	var s: Dictionary = SaveSystem.get_settings()
 	SaveSystem.apply_settings(s)
 
@@ -18,12 +25,6 @@ func _ready() -> void:
 	_hide_overlays()
 	if replay_button:
 		replay_button.pressed.connect(_on_replay_pressed)
-
-	# Continuer ?
-	if SaveSystem.pending_continue:
-		var data: Dictionary = SaveSystem.load_game()
-		_apply_save_data(data)
-		SaveSystem.pending_continue = false
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause"):
@@ -39,20 +40,20 @@ func _on_player_died() -> void:
 	SaveSystem.save_game(_build_save_data())
 
 func _on_replay_pressed() -> void:
+	# Grâce à PROCESS_MODE_WHEN_PAUSED sur le bouton, ce handler est appelé même en pause
 	get_tree().paused = false
-	get_tree().reload_current_scene()
+	get_tree().change_scene_to_file("res://scenes/Game.tscn")
 
 func _hide_overlays() -> void:
 	pause_layer.visible = false
 	gameover_layer.visible = false
 
-# ---------- helpers save ----------
+# --- save helpers ---
 func _build_save_data() -> Dictionary:
 	if player == null:
 		return {}
-	# On accède aux champs du Player
 	var p := player
-	var data: Dictionary = {
+	return {
 		"player": {
 			"x": p.global_position.x,
 			"y": p.global_position.y,
@@ -66,16 +67,3 @@ func _build_save_data() -> Dictionary:
 			"timestamp": Time.get_unix_time_from_system()
 		}
 	}
-	return data
-
-func _apply_save_data(d: Dictionary) -> void:
-	if d.is_empty() or player == null:
-		return
-	var p: Dictionary = d.get("player", {}) as Dictionary
-	var x: float = float(p.get("x", player.global_position.x))
-	var y: float = float(p.get("y", player.global_position.y))
-	player.global_position = Vector2(x, y)
-	if p.has("max_health"): player.max_health = int(p["max_health"])
-	if p.has("health"):     player.health     = clamp(int(p["health"]), 0, player.max_health)
-	if p.has("max_mana"):   player.max_mana   = int(p["max_mana"])
-	if p.has("mana"):       player.mana       = clamp(int(p["mana"]),   0, player.max_mana)

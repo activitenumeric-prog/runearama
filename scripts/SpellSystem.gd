@@ -21,18 +21,18 @@ func cast(caster: Node2D, runes: Array[String], origin: Vector2, dir: Vector2) -
 		return
 
 	var spec := resolve_combination(runes)
-	var p: Node2D = projectile_scene.instantiate()
+	var p: Area2D = projectile_scene.instantiate()
+
 	p.global_position = origin
+	p.direction = dir.normalized()
+	p.damage  = int(spec.damage)
+	p.speed   = float(spec.speed)
+	p.pierce  = int(spec.pierce)
+	p.homing  = bool(spec.homing)
+	p.from_player = true
 
-	if p.has_variable("direction"):
-		p.direction = dir.normalized()
-	if p.has_variable("damage"):
-		p.damage = int(spec.damage)
-	if p.has_variable("speed"):
-		p.speed = float(spec.speed)
-	if p.has_variable("pierce"):
-		p.pierce = int(spec.pierce)
-	if p.has_variable("homing"):
-		p.homing = bool(spec.homing)
-
-	caster.get_tree().current_scene.add_child(p)
+	var parent := caster.get_parent()
+	if parent:
+		parent.add_child(p)
+	else:
+		caster.get_tree().current_scene.add_child(p)
