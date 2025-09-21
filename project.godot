@@ -1,114 +1,28 @@
 ; Engine configuration file.
 ; It's best edited using the editor UI and not directly,
 ; since the parameters that go here are not all obvious.
-;
-; Format:
-;   [section] ; section goes between []
-;   param=value ; assign values to parameters
-
+; 
+; Format: https://docs.godotengine.org/en/stable/classes/class_projectsettings.html#class-projectsettings
 config_version=5
 
 [application]
-
-config/name="Runearama"
-run/main_scene="res://scenes/MainMenu.tscn"
-config/features=PackedStringArray("4.5")
+config/name="RanaramaLike Prototype"
+run/main_scene="res://scenes/Main.tscn"
+config/features=PackedStringArray("4.0")
+boot_splash/show=false
 
 [display]
-
-window/size/viewport_width=800
-window/size/viewport_height=600
-window/stretch/mode="canvas_items"
-window/stretch/aspect="expand"
-window/size/window_width=1280
-window/size/window_height=1024
+window/size/viewport_width=960
+window/size/viewport_height=540
 
 [input]
-
-move_left={
-"deadzone": 0.5,
-"events": [{
-"physical_keycode": 65,
-"type": "keyboard"
-}]
-}
-move_right={
-"deadzone": 0.5,
-"events": [{
-"physical_keycode": 68,
-"type": "keyboard"
-}]
-}
-move_up={
-"deadzone": 0.5,
-"events": [{
-"physical_keycode": 87,
-"type": "keyboard"
-}]
-}
-move_down={
-"deadzone": 0.5,
-"events": [{
-"physical_keycode": 83,
-"type": "keyboard"
-}]
-}
-fire={
-"deadzone": 0.5,
-"events": [{
-"button_index": 1,
-"type": "mouse_button"
-}]
-}
-aim_left={
-"deadzone": null,
-"events": [{
-"physical_keycode": 16777231,
-"type": "keyboard"
-}]
-}
-aim_right={
-"deadzone": null,
-"events": [{
-"physical_keycode": 16777233,
-"type": "keyboard"
-}]
-}
-aim_up={
-"deadzone": null,
-"events": [{
-"physical_keycode": 16777232,
-"type": "keyboard"
-}]
-}
-aim_down={
-"deadzone": null,
-"events": [{
-"physical_keycode": 16777234,
-"type": "keyboard"
-}]
-}
-pause={
-"deadzone": null,
-"events": [{
-"physical_keycode": 80,
-"type": "keyboard"
-}]
-}
-
-ui_accept={
-"deadzone": 0.5,
-"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":32,"physical_keycode":0,"key_label":0,"unicode":32,"location":0,"echo":false,"script":null)
-]
-}
-
-ui_select={
-"deadzone": 0.5,
-"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":69,"physical_keycode":0,"key_label":0,"unicode":101,"location":0,"echo":false,"script":null)
-]
-}
-
-[rendering]
-
-textures/canvas_textures/default_texture_filter=0
-textures/canvas_textures/default_filter=false
+ui_up={ "deadzone": 0.5, "events":[ { "type":"key", "physical_keycode":87 }, { "type":"key", "physical_keycode":16777232 } ] }
+ui_down={ "deadzone": 0.5, "events":[ { "type":"key", "physical_keycode":83 }, { "type":"key", "physical_keycode":16777234 } ] }
+ui_left={ "deadzone": 0.5, "events":[ { "type":"key", "physical_keycode":65 }, { "type":"key", "physical_keycode":16777231 } ] }
+ui_right={ "deadzone": 0.5, "events":[ { "type":"key", "physical_keycode":68 }, { "type":"key", "physical_keycode":16777233 } ] }
+attack={ "deadzone": 0.5, "events":[ { "type":"key", "physical_keycode":32 } ] } # Space
+cast={ "deadzone": 0.5, "events":[ { "type":"key", "physical_keycode":69 } ] }   # E
+dash={ "deadzone": 0.5, "events":[ { "type":"key", "physical_keycode":81 } ] }   # Q
+interact={ "deadzone": 0.5, "events":[ { "type":"key", "physical_keycode":70 } ] } # F
+switch_spell_next={ "deadzone": 0.5, "events":[ { "type":"key", "physical_keycode":88 } ] } # X
+switch_spell_prev={ "deadzone": 0.5, "events":[ { "type":"key", "physical_keycode":67 } ] } # C

@@ -1,7 +1,29 @@
-# Runearama v0.2 (Godot 4) — Starter Project
+# RanaramaLike Prototype (Godot 4)
 
-- Main scene: `res://scenes/MainMenu.tscn`
-- Playtest scene: `res://scenes/Game.tscn`
-- Pause: P, Fire: Left Mouse, Move: WASD
+## Lancer
+1) Ouvre Godot 4 et "Import" ce dossier.
+2) La scène principale est `scenes/Main.tscn` (déjà référencée comme Main).
+3) Appuie sur ▶ pour jouer.
 
-Export presets & project settings included.
+## Commandes
+- Déplacement : ZQSD ou flèches
+- Attaque (tir basique) : Espace
+- Lancer sort : E
+- Changer de sort : C / X (préc./suiv.)
+
+## Contenu
+- Génération procédurale simple (drunkard walk) avec murs instanciés.
+- Joueur et ennemis (poursuite, PV, mort).
+- Projectiles avec dégâts.
+- Système de magie basé Resource (`resources/spells/Bolt.tres`), via `scripts/Spell.gd` et `Caster.gd`.
+- HUD (PV, Mana, Score, Vies).
+
+## À brancher dans l’éditeur
+- Dans `Player` → `Caster`, ajoute un élément dans `spells` et selectionne `resources/spells/Bolt.tres`.
+  (On laisse volontairement ce branchement manuel pour que tu voies comment ajouter d'autres sorts plus tard.)
+
+## Pistes d’extension
+- Ajoute d'autres `Spell.tres` (aoe, cône, rayon).
+- Différents types d'ennemis.
+- Portes, clés, sortie de niveau conditionnée.
+- Effets visuels (sprites, particules, sons).
