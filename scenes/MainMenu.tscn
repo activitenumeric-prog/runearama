@@ -1,0 +1,56 @@
+[gd_scene format=3]
+
+[ext_resource path="res://scripts/MainMenu.gd" type="Script" id=1]
+
+[node name="MainMenu" type="Control"]
+script = ExtResource(1)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Center" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="VBox" type="VBoxContainer" parent="Center"]
+alignment = 1
+custom_minimum_size = Vector2(280, 200)
+
+[node name="Title" type="Label" parent="Center/VBox"]
+text = "Runearama"
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 28
+
+[node name="Start" type="Button" parent="Center/VBox"]
+text = "Nouvelle Partie"
+
+[node name="Continue" type="Button" parent="Center/VBox"]
+text = "Continuer"
+
+[node name="Options" type="Button" parent="Center/VBox"]
+text = "Options"
+
+[node name="Quit" type="Button" parent="Center/VBox"]
+text = "Quitter"
+
+[node name="OptionsPanel" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.25
+anchor_top = 0.25
+anchor_right = 0.75
+anchor_bottom = 0.75
+
+[node name="OptLabel" type="Label" parent="OptionsPanel"]
+anchors_preset = 8
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+horizontal_alignment = 1
+vertical_alignment = 1
+text = "Options (placeholder)"

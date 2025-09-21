@@ -4,6 +4,7 @@ extends Node2D
 @onready var gameover_layer: CanvasLayer = $GameOverOverlay
 @onready var hud: CanvasLayer = $HUD
 @onready var player: Node2D = $Player
+@onready var replay_button: Button = $GameOverOverlay/GOPanel/ReplayButton
 
 func _ready() -> void:
     if player and player.has_signal("died"):
@@ -11,6 +12,8 @@ func _ready() -> void:
     if hud and hud.has_method("set_player"):
         hud.set_player(player)
     _hide_overlays()
+    if replay_button:
+        replay_button.pressed.connect(_on_replay_pressed)
 
 func _unhandled_input(event):
     if event.is_action_pressed("pause"):
@@ -20,6 +23,10 @@ func _unhandled_input(event):
 func _on_player_died() -> void:
     gameover_layer.visible = true
     get_tree().paused = true
+
+func _on_replay_pressed() -> void:
+    get_tree().paused = false
+    get_tree().reload_current_scene()
 
 func _hide_overlays() -> void:
     pause_layer.visible = false

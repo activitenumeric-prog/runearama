@@ -20,8 +20,7 @@ func generate() -> void:
     else:
         rng.seed = dungeon_seed
 
-    # Centre de la grille (division -> cast en int)
-    var start: Vector2i = Vector2i(int(width / 2.0), int(height / 2.0))
+    var start: Vector2i = Vector2i(width // 2, height // 2)
     var pos: Vector2i = start
     _ensure_room(pos)
 
