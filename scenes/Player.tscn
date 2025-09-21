@@ -1,16 +1,16 @@
-[gd_scene load_steps=4 format=3]
+[gd_scene load_steps=6 format=3 uid="uid://duim7f3p2wqjh"]
 
-[ext_resource type="Script" path="res://scripts/Player.gd" id="1"]
-[ext_resource type="Script" path="res://scripts/Stats.gd" id="2"]
-[ext_resource type="Script" path="res://scripts/Caster.gd" id="3"]
+[ext_resource type="Script" uid="uid://dpyx7tgs11111" path="res://scripts/Player.gd" id="1"]
+[ext_resource type="Script" uid="uid://b8vkn6du6o1my" path="res://scripts/Stats.gd" id="2"]
+[ext_resource type="Script" uid="uid://5lswvijkchbc" path="res://scripts/Caster.gd" id="3"]
+[ext_resource type="Texture2D" uid="uid://du4w8k7ojnbqy" path="res://assets/monsters/demon/Hurt1.png" id="4_mdl7e"]
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(12, 12)
 
 [node name="Player" type="CharacterBody2D"]
-script = ExtResource("1")
-collision_layer = 1
 collision_mask = 3
+script = ExtResource("1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("1")
@@ -21,4 +21,6 @@ max_hp = 6
 
 [node name="Caster" type="Node" parent="."]
 script = ExtResource("3")
-max_mana = 20
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("4_mdl7e")
