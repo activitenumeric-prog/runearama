@@ -1,17 +1,17 @@
-[gd_scene load_steps=8 format=3 uid="uid://br4u6of178m3"]
+[gd_scene load_steps=8 format=3 uid="uid://b1c2vifbhuyso"]
 
 [ext_resource type="PackedScene" path="res://scenes/Player.tscn" id="1"]
 [ext_resource type="Script" uid="uid://c2bf17jggc6yy" path="res://scripts/SpellSystem.gd" id="2"]
-[ext_resource type="PackedScene" path="res://scenes/Projectile.tscn" id="3"]
-[ext_resource type="Script" uid="uid://ccpb0l4jsspe4" path="res://scripts/Game.gd" id="5"]
-[ext_resource type="PackedScene" path="res://scenes/HUD.tscn" id="6"]
-[ext_resource type="PackedScene" path="res://scenes/Room.tscn" id="7"]
-[ext_resource type="PackedScene" path="res://scenes/HUD_Minimap.tscn" id="8"]
+[ext_resource type="PackedScene" uid="uid://b8aeai1jn0117" path="res://scenes/Projectile.tscn" id="3"]
+[ext_resource type="Script" uid="uid://ccpb0l4jsspe4" path="res://scripts/Game.gd" id="4"]
+[ext_resource type="PackedScene" path="res://scenes/HUD.tscn" id="5"]
+[ext_resource type="PackedScene" path="res://scenes/Room.tscn" id="6"]
+[ext_resource type="PackedScene" path="res://scenes/HUD_Minimap.tscn" id="7"]
 
 [node name="Game" type="Node2D"]
-script = ExtResource("5")
+script = ExtResource("4")
 
-[node name="Room" parent="." instance=ExtResource("7")]
+[node name="Room" parent="." instance=ExtResource("6")]
 position = Vector2(160, 120)
 
 [node name="Player" parent="." instance=ExtResource("1")]
@@ -21,55 +21,24 @@ position = Vector2(160, 120)
 script = ExtResource("2")
 projectile_scene = ExtResource("3")
 
-[node name="HUD" parent="." instance=ExtResource("6")]
+[node name="HUD" parent="." instance=ExtResource("5")]
 
-[node name="HUD_Minimap" parent="." instance=ExtResource("8")]
+[node name="HUD_Minimap" parent="." instance=ExtResource("7")]
 
 [node name="PauseOverlay" type="CanvasLayer" parent="."]
 
 [node name="PausePanel" type="Panel" parent="PauseOverlay"]
 visible = false
-anchors_preset = -1
-anchor_left = 0.25
-anchor_top = 0.25
-anchor_right = 0.75
-anchor_bottom = 0.75
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="PauseLabel" type="Label" parent="PauseOverlay/PausePanel"]
-layout_mode = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
-text = "PAUSE
-(P pour reprendre)"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="GameOverOverlay" type="CanvasLayer" parent="."]
 visible = false
 
 [node name="GOPanel" type="Panel" parent="GameOverOverlay"]
-anchors_preset = -1
-anchor_left = 0.25
-anchor_top = 0.25
-anchor_right = 0.75
-anchor_bottom = 0.75
-grow_horizontal = 2
-grow_vertical = 2
 
 [node name="GOLabel" type="Label" parent="GameOverOverlay/GOPanel"]
 layout_mode = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
 text = "GAME OVER"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="ReplayButton" type="Button" parent="GameOverOverlay/GOPanel"]
 layout_mode = 0
-anchor_left = 0.25
-anchor_top = 0.65
-anchor_right = 0.75
-anchor_bottom = 0.85
 text = "Rejouer"
