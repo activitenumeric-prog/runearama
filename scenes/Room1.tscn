@@ -2,6 +2,8 @@
 
 [ext_resource type="PackedScene" path="res://scenes/Enemy.tscn" id="1"]
 [ext_resource type="PackedScene" path="res://scenes/Door.tscn" id="2"]
+[ext_resource type="Texture2D" path="res://ressources/sprites/floor_32.png" id="3"]
+[ext_resource type="Texture2D" path="res://ressources/sprites/wall_32.png" id="4"]
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(800, 20)
@@ -9,7 +11,23 @@ size = Vector2(800, 20)
 [sub_resource type="RectangleShape2D" id="2"]
 size = Vector2(20, 600)
 
+[sub_resource type="TileSetAtlasSource" id="10"]
+texture = ExtResource("3")
+texture_region_size = Vector2i(32, 32)
+
+[sub_resource type="TileSetAtlasSource" id="11"]
+texture = ExtResource("4")
+texture_region_size = Vector2i(32, 32)
+
+[sub_resource type="TileSet" id="12"]
+sources/0 = SubResource(10)
+sources/1 = SubResource(11)
+
 [node name="Room1" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource(12)
+rendering_quadrant_size = 16
 
 [node name="Walls" type="Node2D" parent="."]
 

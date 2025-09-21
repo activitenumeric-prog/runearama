@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
-@export var speed := 200.0
+@export var speed := 220.0
 @export var projectile_scene: PackedScene
-@export var shoot_cooldown := 0.25
+@export var shoot_cooldown := 0.22
 @export var max_hp := 5
 @export var invuln_time := 0.6
 
