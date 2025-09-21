@@ -17,7 +17,7 @@ anchor_bottom = 1.0
 
 [node name="VBox" type="VBoxContainer" parent="Center"]
 alignment = 1
-custom_minimum_size = Vector2(280, 200)
+custom_minimum_size = Vector2(280, 220)
 
 [node name="Title" type="Label" parent="Center/VBox"]
 text = "Runearama"
@@ -41,16 +41,47 @@ visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.25
-anchor_top = 0.25
+anchor_top = 0.15
 anchor_right = 0.75
-anchor_bottom = 0.75
+anchor_bottom = 0.85
 
-[node name="OptLabel" type="Label" parent="OptionsPanel"]
+[node name="VBox" type="VBoxContainer" parent="OptionsPanel"]
 anchors_preset = 8
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_left = 0.05
+anchor_top = 0.07
+anchor_right = 0.95
+anchor_bottom = 0.93
+theme_override_constants/separation = 8
+
+[node name="Title" type="Label" parent="OptionsPanel/VBox"]
+text = "Options"
 horizontal_alignment = 1
-vertical_alignment = 1
-text = "Options (placeholder)"
+theme_override_font_sizes/font_size = 22
+
+[node name="Fullscreen" type="CheckBox" parent="OptionsPanel/VBox"]
+text = "Plein écran"
+
+[node name="Master" type="HBoxContainer" parent="OptionsPanel/VBox"]
+[node name="L" type="Label" parent="OptionsPanel/VBox/Master"]
+text = "Master"
+[node name="H" type="HSlider" parent="OptionsPanel/VBox/Master"]
+size_flags_horizontal = 3
+
+[node name="SFX" type="HBoxContainer" parent="OptionsPanel/VBox"]
+[node name="L" type="Label" parent="OptionsPanel/VBox/SFX"]
+text = "SFX"
+[node name="H" type="HSlider" parent="OptionsPanel/VBox/SFX"]
+size_flags_horizontal = 3
+
+[node name="Music" type="HBoxContainer" parent="OptionsPanel/VBox"]
+[node name="L" type="Label" parent="OptionsPanel/VBox/Music"]
+text = "Music"
+[node name="H" type="HSlider" parent="OptionsPanel/VBox/Music"]
+size_flags_horizontal = 3
+
+[node name="Buttons" type="HBoxContainer" parent="OptionsPanel/VBox"]
+alignment = 1
+[node name="Apply" type="Button" parent="OptionsPanel/VBox/Buttons"]
+text = "Appliquer"
+[node name="Close" type="Button" parent="OptionsPanel/VBox/Buttons"]
+text = "Fermer"

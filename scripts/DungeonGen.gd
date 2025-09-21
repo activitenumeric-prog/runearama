@@ -12,79 +12,79 @@ const DIRS: Array[Vector2i] = [Vector2i.LEFT, Vector2i.RIGHT, Vector2i.UP, Vecto
 signal dungeon_generated(rooms: Dictionary)
 
 func generate() -> void:
-    rooms.clear()
+	rooms.clear()
 
-    var rng := RandomNumberGenerator.new()
-    if dungeon_seed == 0:
-        rng.randomize()
-    else:
-        rng.seed = dungeon_seed
+	var rng := RandomNumberGenerator.new()
+	if dungeon_seed == 0:
+		rng.randomize()
+	else:
+		rng.seed = dungeon_seed
 
-    # Centre de la grille (division -> cast en int)
-    var start: Vector2i = Vector2i(int(width / 2.0), int(height / 2.0))
-    var pos: Vector2i = start
-    _ensure_room(pos)
+	# Centre de la grille (division -> cast en int)
+	var start: Vector2i = Vector2i(int(width / 2.0), int(height / 2.0))
+	var pos: Vector2i = start
+	_ensure_room(pos)
 
-    for i in range(max_steps):
-        var choices: Array[Vector2i] = []
-        for d in DIRS:
-            var np: Vector2i = pos + d
-            if _in_bounds(np):
-                choices.append(np)
-        if choices.is_empty():
-            break
+	for i in range(max_steps):
+		var choices: Array[Vector2i] = []
+		for d in DIRS:
+			var np: Vector2i = pos + d
+			if _in_bounds(np):
+				choices.append(np)
+		if choices.is_empty():
+			break
 
-        var next: Vector2i = choices[rng.randi_range(0, choices.size() - 1)]
-        _ensure_room(next)
-        _link(pos, next)
-        pos = next
+		var next: Vector2i = choices[rng.randi_range(0, choices.size() - 1)]
+		_ensure_room(next)
+		_link(pos, next)
+		pos = next
 
-    if rooms.has(start):
-        rooms[start]["type"] = "start"
-    var far: Vector2i = _farthest_from(start)
-    if rooms.has(far):
-        rooms[far]["type"] = "boss"
+	if rooms.has(start):
+		rooms[start]["type"] = "start"
+	var far: Vector2i = _farthest_from(start)
+	if rooms.has(far):
+		rooms[far]["type"] = "boss"
 
-    dungeon_generated.emit(rooms)
+	dungeon_generated.emit(rooms)
 
 func _ensure_room(p: Vector2i) -> void:
-    if not rooms.has(p):
-        rooms[p] = {
-            "type": "normal",
-            "neighbors": [] as Array[Vector2i]
-        }
+	if not rooms.has(p):
+		rooms[p] = {
+			"type": "normal",
+			"neighbors": [] as Array[Vector2i]
+		}
 
 func _link(a: Vector2i, b: Vector2i) -> void:
-    _ensure_room(a)
-    _ensure_room(b)
+	_ensure_room(a)
+	_ensure_room(b)
 
-    var nbs_a: Array[Vector2i] = rooms[a].get("neighbors", [] as Array[Vector2i])
-    if not nbs_a.has(b):
-        nbs_a.append(b)
-    rooms[a]["neighbors"] = nbs_a
+	var nbs_a: Array[Vector2i] = rooms[a].get("neighbors", [] as Array[Vector2i])
+	if not nbs_a.has(b):
+		nbs_a.append(b)
+	rooms[a]["neighbors"] = nbs_a
 
-    var nbs_b: Array[Vector2i] = rooms[b].get("neighbors", [] as Array[Vector2i])
-    if not nbs_b.has(a):
-        nbs_b.append(a)
-    rooms[b]["neighbors"] = nbs_b
+	var nbs_b: Array[Vector2i] = rooms[b].get("neighbors", [] as Array[Vector2i])
+	if not nbs_b.has(a):
+		nbs_b.append(a)
+	rooms[b]["neighbors"] = nbs_b
 
 func _in_bounds(p: Vector2i) -> bool:
-    return p.x >= 0 and p.x < width and p.y >= 0 and p.y < height
+	return p.x >= 0 and p.x < width and p.y >= 0 and p.y < height
 
 func _farthest_from(src: Vector2i) -> Vector2i:
-    var q: Array[Vector2i] = [src]
-    var dist: Dictionary = {src: 0}
-    var last: Vector2i = src
+	var q: Array[Vector2i] = [src]
+	var dist: Dictionary = {src: 0}
+	var last: Vector2i = src
 
-    while not q.is_empty():
-        var cur: Vector2i = q.pop_front()
-        last = cur
+	while not q.is_empty():
+		var cur: Vector2i = q.pop_front()
+		last = cur
 
-        var neighbors: Array[Vector2i] = rooms[cur].get("neighbors", [] as Array[Vector2i])
-        for nb in neighbors:
-            var nbv: Vector2i = nb
-            if not dist.has(nbv):
-                dist[nbv] = dist[cur] + 1
-                q.append(nbv)
+		var neighbors: Array[Vector2i] = rooms[cur].get("neighbors", [] as Array[Vector2i])
+		for nb in neighbors:
+			var nbv: Vector2i = nb
+			if not dist.has(nbv):
+				dist[nbv] = dist[cur] + 1
+				q.append(nbv)
 
-    return last
+	return last

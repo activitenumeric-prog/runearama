@@ -5,12 +5,11 @@ extends CanvasLayer
 var player: Node = null
 
 func set_player(p: Node) -> void:
-    player = p
+	player = p
 
 func _process(_delta: float) -> void:
-    if player == null:
-        return
-    if player.has_variable("health") and player.has_variable("max_health"):
-        health_label.text = "HP: %d/%d" % [player.health, player.max_health]
-    if player.has_variable("mana") and player.has_variable("max_mana"):
-        mana_label.text = "Mana: %d/%d" % [player.mana, player.max_mana]
+	if player == null:
+		return
+	# accès direct aux variables du Player
+	health_label.text = "HP: %d/%d" % [player.health, player.max_health]
+	mana_label.text = "Mana: %d/%d" % [player.mana, player.max_mana]
