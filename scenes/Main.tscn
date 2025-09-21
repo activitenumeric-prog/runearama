@@ -1,27 +1,24 @@
-[gd_scene format=3]
+[gd_scene load_steps=8 format=3 uid="uid://ctkm0lw81bv8p"]
 
 [ext_resource type="PackedScene" path="res://scenes/Player.tscn" id="1"]
 [ext_resource type="PackedScene" path="res://scenes/Room1.tscn" id="2"]
 [ext_resource type="PackedScene" path="res://scenes/Room2.tscn" id="3"]
 [ext_resource type="PackedScene" path="res://scenes/UI.tscn" id="4"]
-[ext_resource type="Script" path="res://scripts/game_manager.gd" id="5"]
-[ext_resource type="PackedScene" path="res://scenes/Projectile.tscn" id="6"]
-[ext_resource type="Script" path="res://scripts/connections.gd" id="7"]
-[ext_resource type="Script" path="res://scripts/camera_shake.gd" id="8"]
+[ext_resource type="Script" uid="uid://cqxchov5gim1y" path="res://scripts/game_manager.gd" id="5"]
+[ext_resource type="Script" uid="uid://vjwa5tpltmoi" path="res://scripts/connections.gd" id="7"]
+[ext_resource type="Script" uid="uid://cbkyydmsn63hc" path="res://scripts/camera_shake.gd" id="8"]
 
 [node name="Main" type="Node2D"]
 
 [node name="Room1" parent="." instance=ExtResource("2")]
-position = Vector2(0,0)
 
 [node name="Room2" parent="." instance=ExtResource("3")]
-position = Vector2(820,0)
+position = Vector2(820, 0)
 
 [node name="Player" parent="." instance=ExtResource("1")]
-position = Vector2(80,300)
+position = Vector2(80, 300)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-current = true
 script = ExtResource("8")
 
 [node name="GameManager" type="Node" parent="."]
