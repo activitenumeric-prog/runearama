@@ -1,5 +1,6 @@
 .godot/
 .import/
+temp/
 .DS_Store
 Thumbs.db
 *.tmp
