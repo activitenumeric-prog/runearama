@@ -1,0 +1,53 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/Enemy.tscn" id="1"]
+[ext_resource type="PackedScene" path="res://scenes/Door.tscn" id="2"]
+
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(800, 20)
+
+[sub_resource type="RectangleShape2D" id="2"]
+size = Vector2(20, 600)
+
+[node name="Room1" type="Node2D"]
+
+[node name="Walls" type="Node2D" parent="."]
+
+[node name="Top" type="StaticBody2D" parent="Walls"]
+position = Vector2(400, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Top"]
+position = Vector2(0, 10)
+shape = SubResource(1)
+
+[node name="Bottom" type="StaticBody2D" parent="Walls"]
+position = Vector2(400, 600)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Bottom"]
+position = Vector2(0, -10)
+shape = SubResource(1)
+
+[node name="Left" type="StaticBody2D" parent="Walls"]
+position = Vector2(0, 300)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Left"]
+position = Vector2(10, 0)
+shape = SubResource(2)
+
+[node name="Right" type="StaticBody2D" parent="Walls"]
+position = Vector2(800, 300)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Right"]
+position = Vector2(-10, 0)
+shape = SubResource(2)
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Enemy1" parent="Enemies" instance=ExtResource("1")]
+position = Vector2(300, 300)
+
+[node name="Enemy2" parent="Enemies" instance=ExtResource("1")]
+position = Vector2(500, 200)
+
+[node name="DoorToRoom2" parent="." instance=ExtResource("2")]
+position = Vector2(760, 300)
