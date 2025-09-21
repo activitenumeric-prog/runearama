@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="5"]
 [ext_resource type="PackedScene" path="res://scenes/Projectile.tscn" id="6"]
 [ext_resource type="Script" path="res://scripts/connections.gd" id="7"]
+[ext_resource type="Script" path="res://scripts/camera_shake.gd" id="8"]
 
 [node name="Main" type="Node2D"]
 
@@ -21,6 +22,7 @@ position = Vector2(80,300)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 current = true
+script = ExtResource("8")
 
 [node name="GameManager" type="Node" parent="."]
 script = ExtResource("5")
