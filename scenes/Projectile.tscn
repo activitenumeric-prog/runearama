@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3]
+
+[node name="Projectile" type="Area2D"]
+script = ExtResource("res://scripts/Projectile.gd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = CircleShape2D { radius = 4.0 }
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = GradientTexture2D { width = 8, height = 8 }

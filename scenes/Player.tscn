@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3]
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("res://scripts/Player.gd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = RectangleShape2D { size = Vector2(16, 16) }
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = GradientTexture2D { width = 16, height = 16 }

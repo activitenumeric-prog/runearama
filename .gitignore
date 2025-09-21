@@ -1,0 +1,10 @@
+# Godot 4 cache & user data
+.godot/
+# Godot 3 legacy (au cas où)
+.import/
+# OS / editors
+.DS_Store
+Thumbs.db
+*.tmp
+# Local builds
+/exports/

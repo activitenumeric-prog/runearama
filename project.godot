@@ -1,0 +1,101 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="RanaramaRemake"
+run/main_scene="res://scenes/Game.tscn"
+config/features=PackedStringArray("4.5")
+
+[display]
+
+window/size/viewport_width=320
+window/size/viewport_height=180
+window/stretch/mode="canvas_items"
+window/size/window_width=1280
+window/size/window_height=720
+
+[input]
+
+move_left={
+"deadzone": 0.5,
+"events": [{
+"physical_keycode": 65,
+"type": "keyboard"
+}]
+}
+move_right={
+"deadzone": 0.5,
+"events": [{
+"physical_keycode": 68,
+"type": "keyboard"
+}]
+}
+move_up={
+"deadzone": 0.5,
+"events": [{
+"physical_keycode": 87,
+"type": "keyboard"
+}]
+}
+move_down={
+"deadzone": 0.5,
+"events": [{
+"physical_keycode": 83,
+"type": "keyboard"
+}]
+}
+fire={
+"deadzone": 0.5,
+"events": [{
+"button_index": 1,
+"type": "mouse_button"
+}]
+}
+aim_left={
+"deadzone": null,
+"events": [{
+"physical_keycode": 16777231,
+"type": "keyboard"
+}]
+}
+aim_right={
+"deadzone": null,
+"events": [{
+"physical_keycode": 16777233,
+"type": "keyboard"
+}]
+}
+aim_up={
+"deadzone": null,
+"events": [{
+"physical_keycode": 16777232,
+"type": "keyboard"
+}]
+}
+aim_down={
+"deadzone": null,
+"events": [{
+"physical_keycode": 16777234,
+"type": "keyboard"
+}]
+}
+pause={
+"deadzone": null,
+"events": [{
+"physical_keycode": 80,
+"type": "keyboard"
+}]
+}
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
+textures/canvas_textures/default_filter=false
